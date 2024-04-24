@@ -6,9 +6,11 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import { constructorSlice } from './slices/constructorIngredientSlice';
 
 const rootReducer = combineReducers({
-  ingredients: ingredientsSlice.reducer
+  [ingredientsSlice.name]: ingredientsSlice.reducer,
+  [constructorSlice.name]: constructorSlice.reducer
 });
 // Заменить на импорт настоящего редьюсера
 
