@@ -4,11 +4,8 @@ import { TIngredient } from '@utils-types';
 import { useSelector } from 'react-redux';
 
 export const getIngredientsList = createAsyncThunk(
-  'ingredients/getIngredientsList',
-  async () => {
-    const response = await getIngredientsApi();
-    return response;
-  }
+  'ingredients/getIngredients',
+  getIngredientsApi
 );
 
 type TIngredientsState = {
@@ -19,7 +16,7 @@ type TIngredientsState = {
 
 const initialState: TIngredientsState = {
   ingredients: [],
-  loading: true,
+  loading: false,
   error: null
 };
 
@@ -28,7 +25,8 @@ export const ingredientsSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    getIngredientsSelector: (state) => state
+    getIngredientsState: (state) => state,
+    getIngredients: (state) => state.ingredients
   },
   extraReducers: (builder) => {
     builder
@@ -47,5 +45,5 @@ export const ingredientsSlice = createSlice({
   }
 });
 
-export const { getIngredientsSelector } = ingredientsSlice.selectors;
-export default ingredientsSlice.reducer;
+export const { getIngredientsState, getIngredients } =
+  ingredientsSlice.selectors;

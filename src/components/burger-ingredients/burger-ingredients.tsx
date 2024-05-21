@@ -8,14 +8,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from '../../services/store';
 import {
   getIngredientsList,
-  getIngredientsSelector
+  getIngredientsState
 } from '../../services/slices/IngredientsSlice';
 import { Preloader } from '../ui/preloader';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */
 
-  const { ingredients, loading, error } = useSelector(getIngredientsSelector);
+  const { ingredients, loading, error } = useSelector(getIngredientsState);
 
   const buns = ingredients.filter((ingredient) => ingredient.type === 'bun');
   const mains = ingredients.filter((ingredient) => ingredient.type === 'main');

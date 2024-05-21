@@ -4,7 +4,7 @@ import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { useSelector } from 'react-redux';
 import {
   getIngredientsList,
-  getIngredientsSelector
+  getIngredientsState
 } from '../../services/slices/IngredientsSlice';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
@@ -12,7 +12,7 @@ import { useDispatch } from '../../services/store';
 export const IngredientDetails: FC = () => {
   const dispatch = useDispatch();
 
-  const { ingredients } = useSelector(getIngredientsSelector);
+  const { ingredients } = useSelector(getIngredientsState);
 
   useEffect(() => {
     console.log(ingredients.length);
@@ -22,8 +22,6 @@ export const IngredientDetails: FC = () => {
   }, []);
 
   const { id } = useParams<{ id: string }>();
-
-  console.log(ingredients);
 
   const ingredientData = ingredients.find(
     (ingredient) => ingredient._id === id

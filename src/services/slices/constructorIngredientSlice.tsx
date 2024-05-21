@@ -32,14 +32,20 @@ export const constructorSlice = createSlice({
       }
     },
     deleteItem: (state, action: PayloadAction<TConstructorIngredient>) => {
-      state.ingredients.filter((item) => item.id !== action.payload.id);
+      state.ingredients = state.ingredients.filter(
+        (item) => item.id !== action.payload.id
+      );
     },
-    clearAll: (state) => (state = initialState)
+    clearAll: (state) => (state = initialState),
+    updateAll: (state, action: PayloadAction<TConstructorIngredient[]>) => {
+      state.ingredients = action.payload;
+    }
   },
   selectors: {
     selectItems: (state: TConstructorState) => state
   }
 });
 
-export const { addItem, deleteItem, clearAll } = constructorSlice.actions;
+export const { addItem, deleteItem, clearAll, updateAll } =
+  constructorSlice.actions;
 export const constructorSelector = constructorSlice.selectors;

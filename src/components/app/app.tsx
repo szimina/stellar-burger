@@ -22,32 +22,34 @@ import {
   useNavigate
 } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route';
+import { useDispatch } from '../../services/store';
+import { useEffect } from 'react';
+import { getIngredientsList } from '../../services/slices/IngredientsSlice';
+import { apiGetUser } from '../../services/slices/userSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const background = location.state?.background;
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getIngredientsList());
+    dispatch(apiGetUser());
+  }, []);
 
   return (
-    <>
+    <div className={styles.app}>
+      <AppHeader />
       <Routes location={background || location}>
-        <Route
-          path='/'
-          element={
-            <>
-              <div className={styles.app}>
-                <AppHeader />
-                <ConstructorPage />
-              </div>
-              <Outlet />
-            </>
-          }
-        />
+        <Route path='/' element={<ConstructorPage />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='/feed' element={<Feed />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
         <Route
           path='/login'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <Login />
             </ProtectedRoute>
           }
@@ -55,7 +57,7 @@ const App = () => {
         <Route
           path='/register'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <Register />
             </ProtectedRoute>
           }
@@ -63,7 +65,7 @@ const App = () => {
         <Route
           path='/forgot-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <ForgotPassword />
             </ProtectedRoute>
           }
@@ -71,7 +73,7 @@ const App = () => {
         <Route
           path='/reset-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <ResetPassword />
             </ProtectedRoute>
           }
@@ -93,71 +95,38 @@ const App = () => {
           }
         />
         <Route path='*' element={<NotFound404 />} />
-        <Route
-          path='/feed/:number'
-          element={
-            <>
-              <div className={styles.app}>
-                <AppHeader />
-                <ConstructorPage />
-              </div>
-              <Outlet />
-            </>
-          }
-        />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
-        <Route
-          path='/profile/orders/:number'
-          element={
-            <ProtectedRoute>
-              <>
-                <div className={styles.app}>
-                  <AppHeader />
-                  <ConstructorPage />
-                </div>
-                <Outlet />
-              </>
-            </ProtectedRoute>
-          }
-        />
       </Routes>
-
       {background && (
         <Routes>
-          {/* <Route
+          <Route
             path='/feed/:number'
             element={
-              <Modal title='Order Info' onClose={() => {}}>
+              <Modal title={''} onClose={() => navigate(-1)}>
                 <OrderInfo />
               </Modal>
             }
-          /> */}
+          />
           <Route
             path='/ingredients/:id'
             element={
-              <Modal
-                title='Детали ингредиента'
-                onClose={() => {
-                  navigate(-1);
-                }}
-              >
+              <Modal title={'Детали ингредиента'} onClose={() => navigate(-1)}>
                 <IngredientDetails />
               </Modal>
             }
           />
-          {/* <Route
+          <Route
             path='/profile/orders/:number'
             element={
-              <ProtectedRoute>
-                <Modal title='Order Info' onClose={() => {}}>
+              <Modal title={''} onClose={() => navigate(-1)}>
+                <ProtectedRoute>
                   <OrderInfo />
-                </Modal>
-              </ProtectedRoute>
+                </ProtectedRoute>
+              </Modal>
             }
-          /> */}
+          />
         </Routes>
       )}
-    </>
+    </div>
   );
 };
 export default App;
