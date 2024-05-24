@@ -2,16 +2,14 @@ import { FC, SyntheticEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
 import { login } from '../../services/slices/userSlice';
 import { useDispatch } from '../../services/store';
+import { DefaultValues, FieldValues, useForm } from 'react-hook-form';
 
 export const Login: FC = () => {
   const dispatch = useDispatch();
 
-  let initialState: string = '';
-  if (localStorage.getItem('email')) {
-    initialState = localStorage.getItem('email')!;
-  }
+  const localStorageEmail = localStorage.getItem('email') ?? '';
 
-  const [email, setEmail] = useState(initialState);
+  const [email, setEmail] = useState(localStorageEmail);
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e: SyntheticEvent) => {

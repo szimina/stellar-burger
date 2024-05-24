@@ -12,17 +12,24 @@ import { constructorSlice } from './slices/constructorIngredientSlice';
 import { userSlice } from './slices/userSlice';
 import { userOrdersSlice } from './slices/userOrdersSlice';
 
-const rootReducer = combineReducers({
-  [ingredientsSlice.name]: ingredientsSlice.reducer,
-  [constructorSlice.name]: constructorSlice.reducer,
-  [userSlice.name]: userSlice.reducer,
-  [feedsSlice.name]: feedsSlice.reducer,
-  [newOrderSlice.name]: newOrderSlice.reducer,
-  [userOrdersSlice.name]: userOrdersSlice.reducer
-});
+// const rootReducer = combineReducers({
+//   [ingredientsSlice.name]: ingredientsSlice.reducer,
+//   [constructorSlice.name]: constructorSlice.reducer,
+//   [userSlice.name]: userSlice.reducer,
+//   [feedsSlice.name]: feedsSlice.reducer,
+//   [newOrderSlice.name]: newOrderSlice.reducer,
+//   [userOrdersSlice.name]: userOrdersSlice.reducer
+// });
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    [ingredientsSlice.name]: ingredientsSlice.reducer,
+    [constructorSlice.name]: constructorSlice.reducer,
+    [userSlice.name]: userSlice.reducer,
+    [feedsSlice.name]: feedsSlice.reducer,
+    [newOrderSlice.name]: newOrderSlice.reducer,
+    [userOrdersSlice.name]: userOrdersSlice.reducer
+  },
   devTools: process.env.NODE_ENV !== 'production'
 });
 

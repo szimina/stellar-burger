@@ -15,7 +15,6 @@ export const IngredientDetails: FC = () => {
   const { ingredients } = useSelector(getIngredientsState);
 
   useEffect(() => {
-    console.log(ingredients.length);
     if (ingredients.length === 0) {
       dispatch(getIngredientsList());
     }

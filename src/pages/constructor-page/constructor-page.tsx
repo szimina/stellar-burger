@@ -8,7 +8,7 @@ import { Preloader } from '../../components/ui';
 import { FC, useEffect } from 'react';
 import {
   getIngredientsList,
-  getIngredientsState
+  getIngredientsLoadingState
 } from '../../services/slices/IngredientsSlice';
 
 export const ConstructorPage: FC = () => {
@@ -17,7 +17,7 @@ export const ConstructorPage: FC = () => {
     dispatch(getIngredientsList());
   }, []);
 
-  const { loading } = useSelector(getIngredientsState);
+  const loading = useSelector(getIngredientsLoadingState);
 
   /** TODO: взять переменную из стора */
   const isIngredientsLoading = loading;
