@@ -9,7 +9,7 @@ import { useDispatch } from '../../services/store';
 import {
   getIngredientsList,
   getIngredientsState
-} from '../../services/slices/IngredientsSlice';
+} from '../../services/slices/ingredientsSlice';
 import { Preloader } from '../ui/preloader';
 
 export const BurgerIngredients: FC = () => {

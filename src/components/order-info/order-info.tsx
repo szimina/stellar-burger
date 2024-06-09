@@ -3,7 +3,7 @@ import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient, TOrder } from '@utils-types';
 import { useDispatch, useSelector } from '../../services/store';
-import { getIngredients } from '../../services/slices/IngredientsSlice';
+import { getIngredients } from '../../services/slices/ingredientsSlice';
 import { getOrderModalData } from '../../services/slices/newOrderSlice';
 import { useParams } from 'react-router-dom';
 import { getOrderByNumberApi } from '@api';
