@@ -9,7 +9,6 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-//
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -28,6 +27,7 @@
 // declare global {
 //   namespace Cypress {
 //     interface Chainable {
+//       dataCy(value: string): Chainable<JQuery<HTMLElement>>
 //       login(email: string, password: string): Chainable<void>
 //       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
 //       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
