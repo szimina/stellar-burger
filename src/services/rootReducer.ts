@@ -1,10 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { ingredientsSlice } from './slices/ingredientsSlice';
+
 import { feedsSlice } from './slices/feedsSlice';
 import { newOrderSlice } from './slices/newOrderSlice';
 import { constructorSlice } from './slices/constructorSlice';
 import { userSlice } from './slices/userSlice';
 import { userOrdersSlice } from './slices/userOrdersSlice';
+import { ingredientsSlice } from './slices/ingredientsSlice';
 
 export const rootReducer = combineReducers({
   [ingredientsSlice.name]: ingredientsSlice.reducer,

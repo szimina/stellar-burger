@@ -18,7 +18,6 @@ export const ConstructorPage: FC = () => {
   }, []);
 
   const loading = useSelector(getIngredientsLoadingState);
-
   /** TODO: взять переменную из стора */
   const isIngredientsLoading = loading;
 

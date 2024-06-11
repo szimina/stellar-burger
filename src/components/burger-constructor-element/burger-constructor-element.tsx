@@ -4,13 +4,10 @@ import { BurgerConstructorElementProps } from './type';
 import { useDispatch } from 'react-redux';
 import { useSelector } from '../../services/store';
 import {
-  clearAll,
   constructorSelector,
   deleteItem,
-  swapIngredient,
-  updateAll
+  swapIngredient
 } from '../../services/slices/constructorSlice';
-import { TConstructorIngredient, TIngredient } from '@utils-types';
 
 export const BurgerConstructorElement: FC<BurgerConstructorElementProps> = memo(
   ({ ingredient, index, totalItems }) => {
