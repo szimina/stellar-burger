@@ -5,11 +5,7 @@ import { TIngredient, TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 import { useSelector } from 'react-redux';
 
-import { useDispatch } from '../../services/store';
-import {
-  getIngredientsList,
-  getIngredientsState
-} from '../../services/slices/IngredientsSlice';
+import { getIngredientsState } from '../../services/slices/constuctorIngredientsSlice';
 import { Preloader } from '../ui/preloader';
 
 export const BurgerIngredients: FC = () => {
