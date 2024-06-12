@@ -6,7 +6,7 @@ import {
   getIngredientsState,
   ingredientsSlice,
   initialState
-} from './ingredientsSlice';
+} from './constuctorIngredientsSlice';
 
 import { ingredientsMockData } from './testData';
 import { configureStore } from '@reduxjs/toolkit';

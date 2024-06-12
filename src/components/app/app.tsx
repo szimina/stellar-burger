@@ -24,7 +24,7 @@ import {
 import { ProtectedRoute } from '../protected-route';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
-import { getIngredientsList } from '../../services/slices/ingredientsSlice';
+import { getIngredientsList } from '../../services/slices/constuctorIngredientsSlice';
 import { apiGetUser } from '../../services/slices/userSlice';
 
 const App = () => {
